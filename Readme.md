@@ -3,6 +3,7 @@
 REST is a **lightweight, language-independent** approach for communication between applications over HTTP.
 
 ### 🔑 Key Features:
+
 - **Language Independent**
     - Clients and servers can be written in **any language**
 - **Data Format Independent**
@@ -16,11 +17,13 @@ REST is a **lightweight, language-independent** approach for communication betwe
 JSON is a **lightweight, plain-text data format** used for storing and exchanging data.
 
 ### ✅ Key Characteristics:
+
 - **Language independent**
 - **Readable and compact**
 - Commonly used with REST APIs
 
 ### 🧱 JSON Structure:
+
 - Curly braces `{}` define an object
 - Inside an object:
     - Data is represented as **name/value pairs**
@@ -28,6 +31,7 @@ JSON is a **lightweight, plain-text data format** used for storing and exchangin
     - **Name must always be in double quotes**
 
 ### 📝 Example:
+
 ```json
 {
   "name": "Ayush",
@@ -37,6 +41,7 @@ JSON is a **lightweight, plain-text data format** used for storing and exchangin
 ```
 
 ---
+
 ## 🌍 REST over HTTP
 
 REST uses the **HTTP protocol** to perform operations on resources identified by URLs.  
@@ -44,13 +49,13 @@ Each operation corresponds to an HTTP method.
 
 ### 🔧 Common HTTP Methods in REST:
 
-| HTTP Method | Purpose                            | Example Use Case                    |
-|-------------|------------------------------------|-------------------------------------|
-| `GET`       | Retrieve a resource                | Fetch a list of users               |
-| `POST`      | Create a new resource              | Add a new user                      |
-| `PUT`       | Update an existing resource        | Replace user details                |
-| `PATCH`     | Partially update a resource        | Update just the user’s email        |
-| `DELETE`    | Remove a resource                  | Delete a specific user              |
+| HTTP Method | Purpose                     | Example Use Case             |
+|-------------|-----------------------------|------------------------------|
+| `GET`       | Retrieve a resource         | Fetch a list of users        |
+| `POST`      | Create a new resource       | Add a new user               |
+| `PUT`       | Update an existing resource | Replace user details         |
+| `PATCH`     | Partially update a resource | Update just the user’s email |
+| `DELETE`    | Remove a resource           | Delete a specific user       |
 
 ### 📌 Key Concepts:
 
@@ -68,6 +73,7 @@ REST over HTTP allows systems to **interact easily and consistently** using simp
 An **HTTP Request** is sent by the client to the server to perform an action on a resource.
 
 ### 🧱 Structure:
+
 1. **Request Line**
     - Method + URL + HTTP Version
     - Example: `GET /api/users HTTP/1.1`
@@ -90,6 +96,7 @@ An **HTTP Request** is sent by the client to the server to perform an action on 
 An **HTTP Response** is sent by the server back to the client after processing the request.
 
 ### 🧱 Structure:
+
 1. **Status Line**
     - HTTP Version + Status Code + Status Message
     - Example: `HTTP/1.1 200 OK`
@@ -108,38 +115,62 @@ An **HTTP Response** is sent by the server back to the client after processing t
 
 ### 🔢 Common Status Codes:
 
-| Code | Meaning               |
-|------|------------------------|
+| Code | Meaning                 |
+|------|-------------------------|
 | 200  | OK (successful request) |
-| 201  | Created                |
-| 400  | Bad Request            |
-| 401  | Unauthorized           |
-| 404  | Not Found              |
-| 500  | Internal Server Error  |
+| 201  | Created                 |
+| 400  | Bad Request             |
+| 401  | Unauthorized            |
+| 404  | Not Found               |
+| 500  | Internal Server Error   |
 
 ---
+
 ## 📄 MIME (Multipurpose Internet Mail Extensions)
 
 MIME is a standard that indicates the **type and format of data** being sent over the internet.
 
-In the context of HTTP, MIME types are used in the **Content-Type** header to describe the **media type** of the request or response body.
+In the context of HTTP, MIME types are used in the **Content-Type** header to describe the **media type** of the request
+or response body.
 
 ### 🧱 Format:
 
 ### 📌 Common MIME Types:
 
-| MIME Type               | Description                          |
-|--------------------------|--------------------------------------|
-| `text/plain`             | Plain text                          |
-| `text/html`              | HTML document                       |
-| `application/json`       | JSON data (commonly used in REST)   |
-| `application/xml`        | XML data                            |
-| `multipart/form-data`    | Used for file uploads               |
-| `application/octet-stream`| Binary data                        |
-| `image/png`, `image/jpeg`| Image files                         |
+| MIME Type                  | Description                       |
+|----------------------------|-----------------------------------|
+| `text/plain`               | Plain text                        |
+| `text/html`                | HTML document                     |
+| `application/json`         | JSON data (commonly used in REST) |
+| `application/xml`          | XML data                          |
+| `multipart/form-data`      | Used for file uploads             |
+| `application/octet-stream` | Binary data                       |
+| `image/png`, `image/jpeg`  | Image files                       |
 
 ### 📝 Example Header:
+
 ```Content-Type: application/json```
 This tells the server or client that the body of the message contains **JSON-formatted data**.
 
 ---
+## 🛣️ `@PathVariable` in Spring
+
+`@PathVariable` is used in Spring to extract **values from the URI path** and bind them to method parameters.
+
+It allows dynamic parts of the URL to be passed into the controller method.
+
+### 📝 Example:
+```java
+@GetMapping("/student/{studentId}")
+public Student getStudent(@PathVariable int studentId){
+    // studentId will contain the value from the URL
+}
+```
+
+🔑 Key Points:
+- The value inside {} in the URL maps to the method parameter
+- The names must match, or you must explicitly define the name in the annotation
+- Often used for REST endpoints like /products/{productId} or /orders/{orderId}
+
+---
+

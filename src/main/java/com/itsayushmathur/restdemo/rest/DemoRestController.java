@@ -11,7 +11,7 @@ public class DemoRestController {
     //add code for the /hello endpoint
 
     @GetMapping("/hello")
-    public String sayHello(){
+    public String sayHello() {
         return "Hello World!";
     }
 }
