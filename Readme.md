@@ -233,4 +233,60 @@ Returning structured JSON like this improves API clarity and consumer experience
 With this setup, your API becomes **cleaner**, more **robust**, and **easier to maintain**.
 
 ---
+## 🌐 REST API Design (Revision Notes)
+
+Designing a REST API involves structuring your endpoints and behavior to be **intuitive, scalable, and maintainable**.
+
+---
+
+### 🔑 Core Principles of REST
+
+| Principle             | Description                                                                 |
+|-----------------------|-----------------------------------------------------------------------------|
+| **Statelessness**     | Each request is independent with all necessary data                         |
+| **Resource-Based**    | APIs should be centered around **resources**, not actions                   |
+| **HTTP Methods**      | Use HTTP verbs (GET, POST, PUT, DELETE, etc.) to perform operations         |
+| **Uniform Interface** | Consistent naming and behavior across the API                              |
+| **Use of URIs**       | Unique identifiers for resources (e.g., `/users/101`)                       |
+
+---
+
+### 🧱 RESTful URI Design
+
+| Action           | URI Example                | HTTP Method |
+|------------------|----------------------------|-------------|
+| Get all items    | `/users`                   | `GET`       |
+| Get single item  | `/users/{id}`              | `GET`       |
+| Create new item  | `/users`                   | `POST`      |
+| Update item      | `/users/{id}`              | `PUT`       |
+| Delete item      | `/users/{id}`              | `DELETE`    |
+
+- Use **plural nouns** (`/products`, `/orders`)
+- Avoid verbs in URIs — use HTTP methods instead
+
+---
+
+### 📦 Data Format
+
+- Use **JSON** for requests and responses (`Content-Type: application/json`)
+- Ensure clear structure and meaningful field names
+
+---
+### 📌 Best Practices
+
+- Use **versioning** in URL (e.g., `/api/v1/users`)
+- Support **filtering, pagination, and sorting** via query params
+- Return **descriptive error messages** and use proper status codes
+- Maintain a **consistent response format** (e.g., success + error structure)
+- Use **HTTPS** for secure communication
+
+---
+
+### ✅ Summary
+
+A well-designed REST API:
+- Follows resource-based, stateless design
+- Uses consistent URIs and HTTP methods
+- Returns proper status codes and structured JSON
+- Scales easily and is intuitive for client developers
 
