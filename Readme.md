@@ -173,4 +173,64 @@ public Student getStudent(@PathVariable int studentId){
 - Often used for REST endpoints like /products/{productId} or /orders/{orderId}
 
 ---
+## ❗ Spring REST Exception Handling
+
+Exception handling in Spring REST is essential for creating clean, consistent, and user-friendly error responses.
+
+---
+
+### 🎯 Goal
+
+To handle exceptions in a way that:
+- Returns **meaningful HTTP status codes**
+- Avoids exposing internal details
+- Keeps response format consistent (e.g., JSON)
+
+---
+
+### 🪜 Step-by-Step Process
+
+| Step | What You Do                                      | Purpose                                      |
+|------|--------------------------------------------------|----------------------------------------------|
+| 1    | Create a custom exception class                  | To define specific errors (e.g., Not Found)  |
+| 2    | Create a global handler class using `@ControllerAdvice` | To apply consistent exception handling app-wide |
+| 3    | Use `@ExceptionHandler` inside that class        | To define how to respond to specific exceptions |
+| 4    | (Optional) Create a custom error response class  | To return structured JSON error details      |
+| 5    | Return proper HTTP status using `ResponseEntity` | To inform client of the error type correctly |
+
+---
+
+### 🏷️ Common Annotations Used
+
+| Annotation         | Purpose                                                                 |
+|--------------------|-------------------------------------------------------------------------|
+| `@ControllerAdvice`| Marks a class for global exception handling across controllers          |
+| `@ExceptionHandler`| Defines a method to handle specific exceptions                          |
+| `@ResponseStatus`  | Sets the HTTP status code directly on a custom exception class          |
+| `@RestControllerAdvice` | Same as `@ControllerAdvice` but adds `@ResponseBody` automatically |
+
+---
+
+### 🧱 Recommended Error Structure (Custom Response)
+
+| Field      | Description                                |
+|------------|--------------------------------------------|
+| `message`  | Description of the error                   |
+| `status`   | HTTP status code (e.g., 404, 500)          |
+| `timestamp`| Time when the error occurred               |
+
+Returning structured JSON like this improves API clarity and consumer experience.
+
+---
+
+### ✅ Summary
+
+- Use `@ControllerAdvice` for centralized error handling
+- Use `@ExceptionHandler` for mapping specific exceptions
+- Return `ResponseEntity` with appropriate HTTP status
+- Optionally use a custom response class for better structure
+
+With this setup, your API becomes **cleaner**, more **robust**, and **easier to maintain**.
+
+---
 
